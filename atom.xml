@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>FT-JOHN</title>
+  <icon>https://ft-john.github.io/icon.png</icon>
+  <subtitle>区块链项目落地探索</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://ft-john.github.io/"/>
+  <updated>2019-12-12T13:16:06.356Z</updated>
+  <id>https://ft-john.github.io/</id>
+  
+  <author>
+    <name>FT-JOHN</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阿里云BaaS下企业以太坊（Quorum）开发实践</title>
+    <link href="https://ft-john.github.io/2019/12/12/aliyun-quorum-2/"/>
+    <id>https://ft-john.github.io/2019/12/12/aliyun-quorum-2/</id>
+    <published>2019-12-12T13:12:40.000Z</published>
+    <updated>2019-12-12T13:16:06.356Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;环境准备&quot;&gt;环境准备&lt;a class=&quot;post-anchor&quot; href=&quot;#环境准备&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;在阿里云BaaS中部署Quorum网络节点，具体可参考&lt;a href=&quot;https://ft-john.github.io/2019/1
+      
+    
+    </summary>
+    
+    
+      <category term="区块链" scheme="https://ft-john.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="区块链" scheme="https://ft-john.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="BaaS" scheme="https://ft-john.github.io/tags/BaaS/"/>
+    
+      <category term="阿里云" scheme="https://ft-john.github.io/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+      <category term="Quorum" scheme="https://ft-john.github.io/tags/Quorum/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用阿里云BaaS快速搭建Quorum企业以太坊网络</title>
+    <link href="https://ft-john.github.io/2019/12/12/aliyun-quorum-1/"/>
+    <id>https://ft-john.github.io/2019/12/12/aliyun-quorum-1/</id>
+    <published>2019-12-12T13:12:34.000Z</published>
+    <updated>2019-12-12T13:13:53.146Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Quorum-简介&quot;&gt;Quorum 简介&lt;a class=&quot;post-anchor&quot; href=&quot;#Quorum-简介&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Quorum（企业以太坊）是由J.P.Morgan主导，在基于以太坊源码开发的一套联盟链产品。合约与应用开发模式与以太
+      
+    
+    </summary>
+    
+    
+      <category term="区块链" scheme="https://ft-john.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="区块链" scheme="https://ft-john.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="BaaS" scheme="https://ft-john.github.io/tags/BaaS/"/>
+    
+      <category term="阿里云" scheme="https://ft-john.github.io/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+      <category term="Quorum" scheme="https://ft-john.github.io/tags/Quorum/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阿里云BaaS下蚂蚁区块链开发实践（二）</title>
+    <link href="https://ft-john.github.io/2019/12/12/antchain-2/"/>
+    <id>https://ft-john.github.io/2019/12/12/antchain-2/</id>
+    <published>2019-12-12T13:10:30.000Z</published>
+    <updated>2019-12-12T13:11:50.826Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;本文将继续介绍我在阿里云下基于蚂蚁区块链开发的产品溯源Demo客户端部分。蚂蚁链提供了两个平台的客户端SDK：Java与Node.js，我使用的是JS SDK。&lt;/p&gt;
+&lt;h1 id=&quot;开发前准备&quot;&gt;开发前准备&lt;a class=&quot;post-anchor&quot; href=&quot;#开发
+      
+    
+    </summary>
+    
+    
+      <category term="区块链" scheme="https://ft-john.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="区块链" scheme="https://ft-john.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="BaaS" scheme="https://ft-john.github.io/tags/BaaS/"/>
+    
+      <category term="阿里云" scheme="https://ft-john.github.io/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+      <category term="蚂蚁区块链" scheme="https://ft-john.github.io/tags/%E8%9A%82%E8%9A%81%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阿里云BaaS下蚂蚁区块链开发实践（一）</title>
+    <link href="https://ft-john.github.io/2019/12/12/antchain-1/"/>
+    <id>https://ft-john.github.io/2019/12/12/antchain-1/</id>
+    <published>2019-12-12T13:07:05.000Z</published>
+    <updated>2019-12-12T13:10:13.992Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;蚂蚁链与阿里云&quot;&gt;蚂蚁链与阿里云&lt;a class=&quot;post-anchor&quot; href=&quot;#蚂蚁链与阿里云&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;蚂蚁区块链是蚂蚁金服自主开发联盟区块链底层引擎，在阿里的强力宣传下，一直保持很高的曝光度。特别是今年的双十
+      
+    
+    </summary>
+    
+    
+      <category term="区块链" scheme="https://ft-john.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="区块链" scheme="https://ft-john.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="BaaS" scheme="https://ft-john.github.io/tags/BaaS/"/>
+    
+      <category term="阿里云" scheme="https://ft-john.github.io/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+      <category term="蚂蚁区块链" scheme="https://ft-john.github.io/tags/%E8%9A%82%E8%9A%81%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用阿里云BaaS服务快速构建企业区块链服务</title>
+    <link href="https://ft-john.github.io/2019/12/12/aliyun-baas-1/"/>
+    <id>https://ft-john.github.io/2019/12/12/aliyun-baas-1/</id>
+    <published>2019-12-12T13:02:39.000Z</published>
+    <updated>2019-12-12T13:51:11.173Z</updated>
+    
+    <summary type="html">
+    
+      test
+    
+    </summary>
+    
+    
+      <category term="区块链" scheme="https://ft-john.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="区块链" scheme="https://ft-john.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="BaaS" scheme="https://ft-john.github.io/tags/BaaS/"/>
+    
+      <category term="阿里云" scheme="https://ft-john.github.io/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+  </entry>
+  
+</feed>
