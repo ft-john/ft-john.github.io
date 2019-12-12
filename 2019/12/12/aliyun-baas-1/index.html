@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      使用阿里云BaaS服务快速构建企业区块链服务 - FT-JOHN
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.1.1"></head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#联盟链与BaaS"><span class="toc-text">联盟链与BaaS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#阿里云BaaS服务介绍"><span class="toc-text">阿里云BaaS服务介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#快速搭建蚂蚁区块链服务实战"><span class="toc-text">快速搭建蚂蚁区块链服务实战</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/friends" class="">
+          友链
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">FT-JOHN</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">FT-JOHN</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/friends" class="">
+            友链
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/ft-john" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">使用阿里云BaaS服务快速构建企业区块链服务</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/12/12</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/区块链">区块链</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/区块链">区块链</a>
+                  
+                
+                  
+                    <a href="/tags/BaaS">BaaS</a>
+                  
+                
+                  
+                    <a href="/tags/阿里云">阿里云</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h1 id="联盟链与BaaS">联盟链与BaaS<a class="post-anchor" href="#联盟链与BaaS"></a></h1><p>区块链技术自2008年随着比特币面市以来，以其去中心化、匿名可信、可追溯、不可篡改等特性，受到社会的广泛关注，被誉为“第三代互联网”。区块链根据其适用的不同场景，被区分为公有链、联盟链（许可链）与私有链。目前公有链产品，如BTC、ETH、EOS等主要应用在加密数字货币领域；而联盟链与私有链主要应用在政府、企业的一些去中心化业务场景中，如供应链金融、产品溯源、版权保护等等。</p>
+<p>联盟链与公有链的主要区别在于：</p>
+<ul>
+<li>用户群体不一样：公有链的用户群面向所有人，而联盟链只面向一定数量且业务相关联的机构开放</li>
+<li>公有链中不需要验证用户身份、匿名访问；而联盟链是准入制，需要核实用户身份后才允许加入</li>
+<li>公有链用户数量大、节点数量多、地域分布广泛；联盟链用户数量与节点数量较少、地域相对比较集中</li>
+<li>相比公有链，联盟链对区块链服务的可靠定性、扩展性、响应速度以及数据的安全性要求比较高</li>
+<li>公有链节点安装运行比较简单，联盟链节点安装、部署、配置很复杂</li>
+<li>…</li>
+</ul>
+<p>因着企业级应用对区块链网络的高标准要求，联盟链的运维难度与成本也很高。而BaaS（Blockchain as a Service，简称BaaS）是一种基于云计算的区块链技术平台服务，可以帮助企业快速构建更稳定、安全的生产级区块链环境，大幅减少在区块链部署、运维、管理、应用开发等方面的挑战，使企业更专注于核心业务创新，并实现业务快速上链。</p>
+<h1 id="阿里云BaaS服务介绍">阿里云BaaS服务介绍<a class="post-anchor" href="#阿里云BaaS服务介绍"></a></h1><p>阿里云近年来发展迅猛，已经占据全球云计算市场前三的份额。阿里云也在国内较早提供BaaS服务的云计算企业，具有多种区块链技术引擎支持、一键式部署、租户数据隔离与可跨地域等特性。目前阿里云BaaS服务主要提供对以下主流区块链引擎的支持：</p>
+<ul>
+<li>Hyperledger Fabric，是由Linux基金会托管的开源企业级区块链技术，是开放式、标准化的区块链技术生态的代表。</li>
+<li>企业以太坊Quorum，是摩根大通（J.P. Morgan）基于以太坊开发的面向企业场景、符合EEA（Enterprise Ethereum Alliance）规范的开源企业级区块链技术。</li>
+<li>蚂蚁区块链，是蚂蚁金服自主研发的高性能、全球部署、极强隐私保护的金融级联盟区块链技术。<br><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi0xYzlkMmM4ZDM1NDBhNDk2LnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="阿里云BaaS架构图" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi0xYzlkMmM4ZDM1NDBhNDk2LnBuZw?x-oss-process=image/format,png" alt="阿里云BaaS架构图"></a></li>
+</ul>
+<h1 id="快速搭建蚂蚁区块链服务实战">快速搭建蚂蚁区块链服务实战<a class="post-anchor" href="#快速搭建蚂蚁区块链服务实战"></a></h1><p>阿里云BaaS控制台提供了一套功能强大的区块链网络管理界面，管理员可以很容易在阿里云上构建一套区块链网络。<br>接下来以蚂蚁区块链为例，演示一下区块链网络的搭建过程。</p>
+<ol>
+<li>登录阿里云控制台，进入“区块链服务”</li>
+<li>在左边菜单中，展开“蚂蚁区块链”，并选择合约链（蚂蚁区块链之前分为存证链与合约链两款产品，合约链基本涵盖了存证链的功能，在合约链正式上线后存证链也从BaaS中移除了。）<br><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi01MDg5ZTQ3OTgwZTQ4YThmLnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="打开“合约链”" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi01MDg5ZTQ3OTgwZTQ4YThmLnBuZw?x-oss-process=image/format,png" alt="打开“合约链”"></a></li>
+<li>首先点击“创建联盟”按钮创建区块链联盟<br><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi0yMTBiODk2MmJmZmU5OWY4LnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="创建联盟" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi0yMTBiODk2MmJmZmU5OWY4LnBuZw?x-oss-process=image/format,png" alt="创建联盟"></a><br>在右边弹框中填写联盟信息<br><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi1lYTgwMTg3NTMzOGU4OTQ1LnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="填写联盟信息" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi1lYTgwMTg3NTMzOGU4OTQ1LnBuZw?x-oss-process=image/format,png" alt="填写联盟信息"></a></li>
+<li>联盟创建后，点击联盟列表中的“管理”操作，进入区块链管理界面。然后点击“创建区块链”按钮，创建区块链网络<br><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi00M2FhM2E5MzdjYjkzMDhmLnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="创建区块链" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi00M2FhM2E5MzdjYjkzMDhmLnBuZw?x-oss-process=image/format,png" alt="创建区块链"></a><br>填写区块链网络基本信息<br><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi03ZTJjMGNjZjdkMTVjNGI3LnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="填写区块链网络基本信息" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi03ZTJjMGNjZjdkMTVjNGI3LnBuZw?x-oss-process=image/format,png" alt="填写区块链网络基本信息"></a></li>
+<li>创建完成后，蚂蚁区块链下的“任务进度”中，可以查看区块链申请进度。一旦申请通过，就可以在区块链网络界面中看到所有区块链节点信息<br><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi1hNDAyYzA0MmNlYTkwMGYzLnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="任务进度" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi1hNDAyYzA0MmNlYTkwMGYzLnBuZw?x-oss-process=image/format,png" alt="任务进度"></a></li>
+</ol>
+<p>至此区块链网络已经搭建完成。目前在阿里云国际站上，通过认证的企业会员可以申请蚂蚁区块链的试用。国内站已经开始收费了，如果想试用，只能加入公共的试用网络。加入方法如下：</p>
+<ol>
+<li>打开“蚂蚁区块链”下的“概述”，点击申请按钮，填写申请资料：<br><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi1lMjNmMjY1MDBmMWNkZWU3LnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="申请试用" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi1lMjNmMjY1MDBmMWNkZWU3LnBuZw?x-oss-process=image/format,png" alt="申请试用"></a></li>
+<li>非常重要：下载私钥并在本地保存好（只允许下载一次）</li>
+<li>网络加入成功后，可以继续进行后继的合约开发与调试工作<br><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi02OTVhNzk4ZDIyZDQzNTM5LnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="加入试用网络" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi02OTVhNzk4ZDIyZDQzNTM5LnBuZw?x-oss-process=image/format,png" alt="加入试用网络"></a></li>
+</ol>
+
+
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/12/12/antchain-1/">阿里云BaaS下蚂蚁区块链开发实践（一）</a>
+        
+    </div>
+    <div class="item right">
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://ft-john.github.io">FT-JOHN</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://ft-john.github.io/2019/12/12/aliyun-baas-1/">https://ft-john.github.io/2019/12/12/aliyun-baas-1/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://ft-john.github.io">FT-JOHN</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2019
+            <a href="https://ft-john.github.io">FT-JOHN</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

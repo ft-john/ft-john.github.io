@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      使用阿里云BaaS快速搭建Quorum企业以太坊网络 - FT-JOHN
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.1.1"></head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Quorum-简介"><span class="toc-text">Quorum 简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Quorum-架构"><span class="toc-text">Quorum 架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Quorum的原生部署"><span class="toc-text">Quorum的原生部署</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在阿里云BaaS中部署Quorum网络"><span class="toc-text">在阿里云BaaS中部署Quorum网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#开通BaaS服务"><span class="toc-text">开通BaaS服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建企业以太坊网络"><span class="toc-text">创建企业以太坊网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问区块链网络"><span class="toc-text">访问区块链网络</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/friends" class="">
+          友链
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">FT-JOHN</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">FT-JOHN</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/friends" class="">
+            友链
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/ft-john" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">使用阿里云BaaS快速搭建Quorum企业以太坊网络</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/12/12</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/区块链">区块链</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/区块链">区块链</a>
+                  
+                
+                  
+                    <a href="/tags/BaaS">BaaS</a>
+                  
+                
+                  
+                    <a href="/tags/阿里云">阿里云</a>
+                  
+                
+                  
+                    <a href="/tags/Quorum">Quorum</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h1 id="Quorum-简介">Quorum 简介<a class="post-anchor" href="#Quorum-简介"></a></h1><p>Quorum（企业以太坊）是由J.P.Morgan主导，在基于以太坊源码开发的一套联盟链产品。合约与应用开发模式与以太坊基本一致，以太坊的开发人员可以很容易切换到Quorum平台上面来，甚至一些以太坊上的合约、应用也可以轻松的移植过来。<br>Quorum也得到业界的广泛关注，J.P.Morgan与Microsoft建立了紧密的合作关系，共同推广Quorum;Quorum也登录了Azure、阿里云等云服务端的BaaS平台。</p>
+<p>Quorum与Ethereum的主要区别在于：</p>
+<ol>
+<li>提供了Transaction和Contract的私有化功能</li>
+<li>替换的共识机制，用IBFT与Raft共识取代了以太坊的PoW共识</li>
+<li>加入了网络与节点的权限管理，从以太坊的开放式变成了许可制</li>
+<li>交易处理性能方面得到了很大的提升<h1 id="Quorum-架构">Quorum 架构<a class="post-anchor" href="#Quorum-架构"></a></h1><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi0yMjBiYTdjYTM4NGU0MTM3LnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="Quorum逻辑架构图" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi0yMjBiYTdjYTM4NGU0MTM3LnBuZw?x-oss-process=image/format,png" alt="Quorum逻辑架构图"></a><br>Quorum网络由以下几大模块构成：</li>
+</ol>
+<ul>
+<li>Quorum Node<br>Quorum Node 是 以太坊geth的一个轻量级的分叉，这样可以充分利用以太坊日益增大的研发社区，同时在未来也会跟着geth的版本持续升级。</li>
+<li>Privacy Manager<br>Quorum提供了Tessera和Constellation新旧两种私有交易方案, Tessera目前已经可以用于生产环境，并且会持续改进升级，而Constellation只继续提供支持不再升级。Quorum的隐私管理由以下两个子模块组成：<ul>
+<li>Transaction Manager: 负责管理私有交易。它存储并允许访问加密的交易数据，与其他参与者的Privacy Manager交换加密后的数据，但不能访问任何敏感的私钥。</li>
+<li>Enclave: 用于加解密私有交易信息，与 Transaction Manager 是一对一的关系<h1 id="Quorum的原生部署">Quorum的原生部署<a class="post-anchor" href="#Quorum的原生部署"></a></h1>Quorum 开发者文档中提供了两种部署方式：</li>
+</ul>
+</li>
+<li>Docker<br>可以通过以下命令行，拉取quorum、tessera、constellation容器模板<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull quorumengineering&#x2F;quorum</span><br><span class="line">docker pull quorumengineering&#x2F;tessera</span><br><span class="line">docker pull quorumengineering&#x2F;constellation</span><br></pre></td></tr></table></figure></li>
+<li><em>docker方式确实很方便，但是quorum文档中的介绍到此就打住了，并没有对docker配置进行详细说明，让人很难照着这个方式继续走下去…*</em></li>
+<li>源代码<ol>
+<li>下载代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;jpmorganchase&#x2F;quorum.git</span><br></pre></td></tr></table></figure></li>
+<li>编译代码, 需要先安装go运行环境<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd quorum</span><br><span class="line">make all</span><br></pre></td></tr></table></figure></li>
+<li>运行test<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make test</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><em>我卡在了编译环节，试了很多办法也走不下去，此路也不通…*</em></li>
+</ul>
+<h1 id="在阿里云BaaS中部署Quorum网络">在阿里云BaaS中部署Quorum网络<a class="post-anchor" href="#在阿里云BaaS中部署Quorum网络"></a></h1><h2 id="开通BaaS服务">开通BaaS服务<a class="post-anchor" href="#开通BaaS服务"></a></h2><p>首先当然是要开通阿里云BaaS服务，具体参考<a href="https://www.alibabacloud.com/help/zh/doc-detail/85601.htm?spm=a2c63.p38356.879954.16.7e9850d7KrP3iY" target="_blank" rel="noopener">阿里云文档</a></p>
+<h2 id="创建企业以太坊网络">创建企业以太坊网络<a class="post-anchor" href="#创建企业以太坊网络"></a></h2><ol>
+<li>登录阿里云BaaS控制台，打开“企业以太坊”下的“概览”页面：<br><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi03ZmM5ZDY3NTkyNjRmNWQzLnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="打开概览" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi03ZmM5ZDY3NTkyNjRmNWQzLnBuZw?x-oss-process=image/format,png" alt="打开概览"></a></li>
+<li>在概览页面中点击“创建以太坊”<br><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi01MTkyMTc5ZTdiNjA0NDRlLnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="创建以太坊" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi01MTkyMTc5ZTdiNjA0NDRlLnBuZw?x-oss-process=image/format,png" alt="创建以太坊"></a></li>
+<li>填写以太坊基本资料：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td align="left">以太坊网络的名称，建议填写与业务相关的名称，便于识别。</td>
+</tr>
+<tr>
+<td>网络ID</td>
+<td align="left">以太坊网络的ID，创建后不能修改。</td>
+</tr>
+<tr>
+<td>共识机制</td>
+<td align="left">目前只支持istanbul（IBFT）共识，暂时还未开放Raft共识。</td>
+</tr>
+<tr>
+<td>燃料限制</td>
+<td align="left">GASLIMIT值，代表了这个交易的执行最多被允许使用的计算步骤。</td>
+</tr>
+<tr>
+<td>地域</td>
+<td align="left">您的区块链基础设施所在的地域。建议选择与业务应用系统相同的地域。</td>
+</tr>
+<tr>
+<td>备注</td>
+<td align="left">填写关于组织的其他说明。</td>
+</tr>
+<tr>
+<td>增加节点</td>
+<td align="left">添加需要创建的默认节点名称。IBFT共识需要3F+1个节点，所以最少要添加4个节点。</td>
+</tr>
+<tr>
+<td><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi0wNmQ2OGNiYTVlM2VlYmNkLnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="基本资料" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi0wNmQ2OGNiYTVlM2VlYmNkLnBuZw?x-oss-process=image/format,png" alt="基本资料"></a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>4. 点击“创建”，开始创建以太坊网络。创建大概要花费15-40分钟进行资源配置</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>5. 配置完成后，在“我的以太坊”列表中可以看到新创建的Quorum网络。</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi05MjhkZjUwMzU1N2JkMjdiLnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="我的以太坊" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi05MjhkZjUwMzU1N2JkMjdiLnBuZw?x-oss-process=image/format,png" alt="我的以太坊"></a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>## 管理区块链网络</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>### 区块链运行监控</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>1. 查看区块链网络监控</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>在“我的以太坊”列表中，点击以太坊ID，会打开Quorum区块链网络监控工具，可以看到区块链与各个节点的运行状态与实时数据。</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi05NGJjMWIyNjA5ZmVhOTkxLnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="网络监控" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi05NGJjMWIyNjA5ZmVhOTkxLnBuZw?x-oss-process=image/format,png" alt="网络监控"></a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>2. 查看区块浏览器</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>在“我的节点”列表中，点击任意节点的“监控”操作，可以打开区块浏览器。可以查看所有的区块与交易数据。</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi05NzI1MDZiMmEwOWE3ODA2LnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="区块浏览器" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi05NzI1MDZiMmEwOWE3ODA2LnBuZw?x-oss-process=image/format,png" alt="区块浏览器"></a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>3. 查看运行日志</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>在控制台左边菜单中，点击“日志”可以查看最新的运行日志。</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi1lOTc0NzhlOTBmN2IwY2I0LnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="日志" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi1lOTc0NzhlOTBmN2IwY2I0LnBuZw?x-oss-process=image/format,png" alt="日志"></a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>### 节点管理</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>1. 在当前用户下添加节点</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>在“我的以太坊”列表中，点击“增加节点”，填写节点名称与描述，即可增加一个新节点到网络中</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi0wYWRmYjFkMWVlYjhmNGRiLnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="增加节点" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi0wYWRmYjFkMWVlYjhmNGRiLnBuZw?x-oss-process=image/format,png" alt="增加节点"></a></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li>邀请其他阿里云BaaS用户加入以太坊网络<br>在“我的以太坊”列表中，点击“邀请”按钮，将邀请链接与邀请码发给其他阿里云BaaS用户，用户按照页面指引，一步步操作即可加入。<br><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi1iYjE2OTcxZjc4NTVjMmNhLnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="邀请用户" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi1iYjE2OTcxZjc4NTVjMmNhLnBuZw?x-oss-process=image/format,png" alt="邀请用户"></a></li>
+<li>添加阿里云以外的Quorum节点到网络<br>参考第一步增加节点，在填写节点信息时勾上“外部节点”选项即可。然后在“我的节点”列表中，点击节点名称，打开节点配置，修改以下节点参数：<ul>
+<li>IP: Quorum 节点和节点 tx-manager 的公网IP地址</li>
+<li>TMPort: 节点 tx-manager 的服务端口</li>
+<li>P2pPort: Quorum 节点的 P2P 通信端口</li>
+<li>TMPub: 节点 tx-manager 使用的身份公钥</li>
+<li>NodePub: Quorum 节点的公钥</li>
+<li>WSPort: 可选，Quorum 节点 websocket 服务端口</li>
+<li>RpcPort: 可选， Quorum 节点 RPC 服务端口<br><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi0wYTg4NzkxYTViOTA2OWRiLnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="修改外部节点参数" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi0wYTg4NzkxYTViOTA2OWRiLnBuZw?x-oss-process=image/format,png" alt="修改外部节点参数"></a></li>
+</ul>
+</li>
+<li>设置节点安全配置<br>在“我的节点”列表中，点击节点名称，打开节点配置而。然后在“安全设置”中设置该节点的RPC 接口的用户名和密码。以后的客户端与应用程序连接都需要用到该用户名密码。<br><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi02YTQyNzkwOTYyYjQ3NGNkLnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="节点安全配置" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi02YTQyNzkwOTYyYjQ3NGNkLnBuZw?x-oss-process=image/format,png" alt="节点安全配置"></a></li>
+<li>节点投票<br>如果新加入的节点要成为“验证节点”参与共识算法打包区块，则需要半数以上的用户投票通过。投票方法为，在节点列表中，点击该节点的“投票”操作即可。等收到足够的票数后，该节点将转成“验证节点”。</li>
+</ol>
+<h2 id="访问区块链网络">访问区块链网络<a class="post-anchor" href="#访问区块链网络"></a></h2><p>至此，在阿里云上已经成功搭建好Quorum网络。客户端访问需要提供节点访问地址与安全信息（用户名、密码）。访问地址可以在“我的节点”中找到，安全信息可以在节点设置中查看或设置。</p>
+
+
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/12/12/aliyun-quorum-2/">阿里云BaaS下企业以太坊（Quorum）开发实践</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/12/12/antchain-2/">阿里云BaaS下蚂蚁区块链开发实践（二）</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://ft-john.github.io">FT-JOHN</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://ft-john.github.io/2019/12/12/aliyun-quorum-1/">https://ft-john.github.io/2019/12/12/aliyun-quorum-1/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://ft-john.github.io">FT-JOHN</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2019
+            <a href="https://ft-john.github.io">FT-JOHN</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

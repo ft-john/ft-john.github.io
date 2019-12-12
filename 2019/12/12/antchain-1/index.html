@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      阿里云BaaS下蚂蚁区块链开发实践（一） - FT-JOHN
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.1.1"></head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#蚂蚁链与阿里云"><span class="toc-text">蚂蚁链与阿里云</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建蚂蚁链网络"><span class="toc-text">创建蚂蚁链网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#蚂蚁链智能合约"><span class="toc-text">蚂蚁链智能合约</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Demo-功能介绍"><span class="toc-text">Demo 功能介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#合约实现"><span class="toc-text">合约实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一点感受"><span class="toc-text">一点感受</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/friends" class="">
+          友链
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">FT-JOHN</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">FT-JOHN</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/friends" class="">
+            友链
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/ft-john" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">阿里云BaaS下蚂蚁区块链开发实践（一）</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/12/12</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/区块链">区块链</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/区块链">区块链</a>
+                  
+                
+                  
+                    <a href="/tags/BaaS">BaaS</a>
+                  
+                
+                  
+                    <a href="/tags/阿里云">阿里云</a>
+                  
+                
+                  
+                    <a href="/tags/蚂蚁区块链">蚂蚁区块链</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h1 id="蚂蚁链与阿里云">蚂蚁链与阿里云<a class="post-anchor" href="#蚂蚁链与阿里云"></a></h1><p>&emsp;&emsp;蚂蚁区块链是蚂蚁金服自主开发联盟区块链底层引擎，在阿里的强力宣传下，一直保持很高的曝光度。特别是今年的双十一，给4亿件天猫海淘商品在区块链上获得了“身份证”，实现从海外采购到国内配送的全链路溯源。蚂蚁链经过阿里内部这么多极端应用场景的锤炼，相信可以胜任大多数的企业应用场景。<br>&emsp;&emsp;蚂蚁链目前暂时还未开源，无从了解过多的技术细节。不过经过公开的文档中可以看到底层采用的是以太坊那套技术框架，虚拟机采用的是EVM，智能合约开发使用Solidity，提供Java与JS SDK。</p>
+<p>&emsp;&emsp;蚂蚁链也是阿里云BaaS服务支持的三大区块链引擎之一，使用阿里云BaaS，可以极大简化区块链网络的部署运维成本。当然，蚂蚁链目前没有开源，也不提供独立部署，只能通过阿里云BaaS或是蚂蚁金服下的区块链BaaS平台来进行管理。<br>&emsp;&emsp;除了运维的支撑，阿里云BaaS也为蚂蚁链提供一个在线合约开发工具 – “Cloud IDE”。有点类似于以太坊的Remix IDE，为智能合约开发提供简单、高效的集成环境，并提供以下核心功能：</p>
+<ul>
+<li>合约编辑与编译，展示编译结果字节码和接口说明（ABI）。</li>
+<li>合约的部署和调用；提供默认体验链环境和测试账户，用来部署和调用合约。</li>
+<li>解析合约方法的返回值、事件日志等，辅助调试合约；</li>
+<li>保存合约工程到 BaaS 合约工程管理。</li>
+</ul>
+<p>在前段时间，我有机会体验了阿里云BaaS服务，尝试照着文档开发了一个蚂蚁链的Demo应用。现把主要的开发步骤与心得记录下来，与大家共享。</p>
+<h1 id="创建蚂蚁链网络">创建蚂蚁链网络<a class="post-anchor" href="#创建蚂蚁链网络"></a></h1><p>通过BaaS可以很方便创建联盟，建立区块链网络，详细操作可以参考<a href="https://www.alibabacloud.com/help/zh/doc-detail/118027.htm" target="_blank" rel="noopener">阿里云官方文档</a>或我的<a href="https://ft-john.github.io/2019/12/12/aliyun-baas-1/">上一篇博客</a>。</p>
+<h1 id="蚂蚁链智能合约">蚂蚁链智能合约<a class="post-anchor" href="#蚂蚁链智能合约"></a></h1><p>蚂蚁链虽使用solidity作为智能合约的开发语言，但使用时与以太坊最新原生的solidity语法有不少差别：</p>
+<ol>
+<li><p>蚂蚁链只支持到solidity 0.4.23及以下版本，不支援solidity最新的语法特性；</p>
+</li>
+<li><p>由于蚂蚁区块链对 Solidity 语言的支持与原生的 Solidity 语言不同，因此不能使用外部社区的 solc-js 编译工具。只能使用BaaS 平台提供的 <a href="http://baas-public.oss-cn-shanghai.aliyuncs.com/alipay-solc-0.1.10.tgz" target="_blank" rel="noopener">专用solc-js</a></p>
+</li>
+<li><p>蚂蚁区块链合约平台基本支持 Solidity 所有的数据类型，但是对于一些用户编写的合约的输入参数类型并没有完全的支持，比如参数输入中二维数组的输入。</p>
+</li>
+<li><p>蚂蚁区块链合约平台提供了 identity 类型来标注每一个用户的身份，不支持原生 Solidity 中的 address 类型，identity 的长度为 32 字节。</p>
+</li>
+<li><p>蚂蚁区块链也提供了一些合约中的原生函数，具体可参考<a href="https://www.alibabacloud.com/help/zh/doc-detail/109257.htm" target="_blank" rel="noopener">阿里云文档</a></p>
+<h1 id="Demo-功能介绍">Demo 功能介绍<a class="post-anchor" href="#Demo-功能介绍"></a></h1><p>我实现的Demo主要目标是建立一套简单的产品溯源系统，模拟对产品从商家生产、物流运输到最终商场销售进行全流程查询与追踪。<br>Demo中主要包含以下角色与功能：</p>
+</li>
+<li><p>生产商：manufacturer</p>
+<ul>
+<li>创建产品</li>
+<li>创建批次</li>
+<li>创建批次</li>
+<li>创建订单</li>
+<li>查询订单状态</li>
+<li>产品批次溯源</li>
+</ul>
+</li>
+<li><p>运输商：transporter</p>
+<ul>
+<li>运送订单</li>
+<li>签收订单（中途站）</li>
+<li>记录订单途经位置</li>
+</ul>
+</li>
+<li><p>零售商：retailer</p>
+<ul>
+<li>签收订单</li>
+<li>更新库存</li>
+<li>查询库存</li>
+<li>售出产品</li>
+<li>查询售出记录</li>
+<li>产品批次溯源</li>
+</ul>
+</li>
+<li><p>管理员：admin</p>
+<ul>
+<li>创建用户，设置用户角色</li>
+<li>查询用户及其角色<h1 id="合约实现">合约实现<a class="post-anchor" href="#合约实现"></a></h1>由于蚂蚁链合约开发语言与原生solidtiy有一定的差异，使用原生的solcjs编译会出各种问题，并且错误提示也不完整。因此强烈建议使用<strong>阿里云Cloud IDE</strong>开发合约。使用方法是在“联盟管理”中可以看到“合约工程管理”，然后新建或编辑现有合约工程即可。<br><a href="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi03NzE5ZGJhMTcwYTcwYTY0LnBuZw?x-oss-process=image/format,png" target="_blank" rel="noopener" data-caption="阿里云Cloud IDE" data-fancybox="images"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMTczMjU2Mi03NzE5ZGJhMTcwYTcwYTY0LnBuZw?x-oss-process=image/format,png" alt="阿里云Cloud IDE"></a></li>
+</ul>
+</li>
+<li><p>创建所需的枚举与结构体</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用户角色</span></span><br><span class="line">enum UserRole &#123;</span><br><span class="line">    manufacturer,</span><br><span class="line">    transporter,</span><br><span class="line">    retailer,</span><br><span class="line">    admin</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//订单状态</span></span><br><span class="line">enum OrderState &#123;</span><br><span class="line">    created,</span><br><span class="line">    transporting,</span><br><span class="line">    finished</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用户结构体</span></span><br><span class="line">struct User &#123;</span><br><span class="line">    identity account;</span><br><span class="line">    string name;</span><br><span class="line">    UserRole role;</span><br><span class="line">    string companyName;</span><br><span class="line">    string companyAddress;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//产品结构体</span></span><br><span class="line">struct Product &#123;</span><br><span class="line">    string name;</span><br><span class="line">    string modelNumber;</span><br><span class="line">    string manufacturerName;</span><br><span class="line">    string description;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//批次结构体</span></span><br><span class="line">struct Batch &#123;</span><br><span class="line">    string batchNumber;</span><br><span class="line">    string modelNumber;</span><br><span class="line">    uint32 quantity;</span><br><span class="line">    uint256 timestamp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//订单结构体</span></span><br><span class="line">struct Order &#123;</span><br><span class="line">    string orderNumber;</span><br><span class="line">    string manufacturerName;</span><br><span class="line">    string retailerName;</span><br><span class="line">    OrderState state;</span><br><span class="line">    string batchNumber;</span><br><span class="line">    string modelNumber;</span><br><span class="line">    uint32 quantity;</span><br><span class="line">    uint256 timestamp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//订单状态</span></span><br><span class="line">struct OrderStatus &#123;</span><br><span class="line">    string orderNumber;</span><br><span class="line">    OrderState status;</span><br><span class="line">    uint256 timestamp;</span><br><span class="line">    string userAccount;</span><br><span class="line">    string companyName;</span><br><span class="line">    string companyAddress;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//库存结构体</span></span><br><span class="line">struct Inventory &#123;</span><br><span class="line">    string batchNumber;</span><br><span class="line">    string modelNumber;</span><br><span class="line">    string orderNumber;</span><br><span class="line">    uint64 quantity;</span><br><span class="line">    uint256 timestamp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//销售记录</span></span><br><span class="line">struct SaleRecord &#123;</span><br><span class="line">    string batchNumber;</span><br><span class="line">    string modelNumber;</span><br><span class="line">    uint64 quantity;</span><br><span class="line">    uint256 timestamp;</span><br><span class="line">    string userAccount;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//订单状态</span></span><br><span class="line">struct MyOrderStatus &#123;</span><br><span class="line">    mapping(<span class="function"><span class="params">uint</span> =&gt;</span> OrderStatus) statusList;</span><br><span class="line">    uint statusSize;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//销售历史清单</span></span><br><span class="line">struct MySoldList &#123;</span><br><span class="line">    mapping(<span class="function"><span class="params">uint</span> =&gt;</span> SaleRecord) saleRecordList;</span><br><span class="line">    uint soldSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>定义管理员，将发布合约的用户定义为管理员，管理员可以设置分配其他用户权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">identity admin; </span><br><span class="line">constructor() public&#123;</span><br><span class="line">        admin &#x3D; msg.sender;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; modifier</span><br><span class="line">modifier onlyAdmin() &#123;</span><br><span class="line">    require(msg.sender &#x3D;&#x3D; admin,&quot;Permission denied&quot;);</span><br><span class="line">    _;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>添加管理员相关方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;添加或设置用户基本信息</span><br><span class="line">function setUser(identity _account, string _name, uint256 _role, string _companyName, string _companyAddress) public onlyAdmin returns(bool) &#123;</span><br><span class="line">    userList[_account] &#x3D; User(_account, _name, UserRole(_role), _companyName, _companyAddress);</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;获取用户基本信息</span><br><span class="line">function getUser(identity _account) public onlyAdmin returns(identity, string, UserRole, string, string) &#123;</span><br><span class="line">    var user &#x3D; userList[_account];</span><br><span class="line">    return (user.account, user.name, user.role, user.companyName, user.companyAddress);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>为其他用户添加业务方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    &#x2F;&#x2F;添加产品</span><br><span class="line">    function AddProduct(string _name, string _modelNumber, string _description) public returns(bool) &#123;</span><br><span class="line">        var user &#x3D; userList[msg.sender];</span><br><span class="line">        productList[_modelNumber] &#x3D; Product(_name, _modelNumber, user.companyName, _description);</span><br><span class="line"></span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#x2F;&#x2F;其他省略 ...</span><br></pre></td></tr></table></figure>
+<h1 id="一点感受">一点感受<a class="post-anchor" href="#一点感受"></a></h1><p>蚂蚁链不支持最新的solidity语法，开发起来会有些不方便。使用Cloud IDE开发可以快速编译、检查代码问题，并且能直接发布到测试网络上进行测试，确实能提高效率。<br>另一个需注意的地方是，蚂蚁链不支持address类型，取而代之是identity类型，从msg.sender中取出也就是当前用户的identity数据。<br>蚂蚁链的用户体系需要先在BaaS中创建，每个用户有一个用户名。合约中无法使用用户名，只能使用identiyt。而identity就是这个用户名的hash结果，可以通过SDK中辅助工具类中getHash方法，将用户名转成identity. 如<br><code>Chain.utils.getHash(&#39;Tester001&#39;) //通过账户 name，计算得到账户的 identity</code><br>完整Demo代码请参考：<a href="https://github.com/ft-john/antblockchain_demo" target="_blank" rel="noopener">https://github.com/ft-john/antblockchain_demo</a></p>
+</li>
+</ol>
+
+
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/12/12/antchain-2/">阿里云BaaS下蚂蚁区块链开发实践（二）</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/12/12/aliyun-baas-1/">使用阿里云BaaS服务快速构建企业区块链服务</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://ft-john.github.io">FT-JOHN</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://ft-john.github.io/2019/12/12/antchain-1/">https://ft-john.github.io/2019/12/12/antchain-1/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://ft-john.github.io">FT-JOHN</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2019
+            <a href="https://ft-john.github.io">FT-JOHN</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
