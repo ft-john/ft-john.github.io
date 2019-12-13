@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ft-john.github.io/"/>
-  <updated>2019-12-12T13:16:06.356Z</updated>
+  <updated>2019-12-13T02:03:27.922Z</updated>
   <id>https://ft-john.github.io/</id>
   
   <author>
@@ -21,15 +21,11 @@
     <link href="https://ft-john.github.io/20191212-aliyun-quorum-2/"/>
     <id>https://ft-john.github.io/20191212-aliyun-quorum-2/</id>
     <published>2019-12-12T13:12:40.000Z</published>
-    <updated>2019-12-12T13:16:06.356Z</updated>
+    <updated>2019-12-13T02:03:27.922Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;h1 id=&quot;环境准备&quot;&gt;环境准备&lt;a class=&quot;post-anchor&quot; href=&quot;#环境准备&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;在阿里云BaaS中部署Quorum网络节点，具体可参考&lt;a href=&quot;https://ft-john.github.io/2019/1
-      
+      1. 在阿里云BaaS中部署Quorum网络节点，具体可参考另一篇博文 2. 在节点管理器中找到客户端要连接节点信息 连接地址：在节点列表中可以查看节点rpc访问链接地址（提供http与ws两种格式）安全信息：在节点设置中可以查看或修改节点访问的用户名密码
     
     </summary>
     
@@ -52,14 +48,11 @@
     <link href="https://ft-john.github.io/20191212-aliyun-quorum-1/"/>
     <id>https://ft-john.github.io/20191212-aliyun-quorum-1/</id>
     <published>2019-12-12T13:12:34.000Z</published>
-    <updated>2019-12-12T13:13:53.146Z</updated>
+    <updated>2019-12-13T01:56:12.571Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;h1 id=&quot;Quorum-简介&quot;&gt;Quorum 简介&lt;a class=&quot;post-anchor&quot; href=&quot;#Quorum-简介&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Quorum（企业以太坊）是由J.P.Morgan主导，在基于以太坊源码开发的一套联盟链产品。合约与应用开发模式与以太
-      
+      Quorum（企业以太坊）是由J.P.Morgan主导，在基于以太坊源码开发的一套联盟链产品。合约与应用开发模式与以太坊基本一致，以太坊的开发人员可以很容易切换到Quorum平台上面来，甚至一些以太坊上的合约、应用也可以轻松的移植过来。&lt;br/&gt;Quorum也得到业界的广泛关注，J.P.Morgan与Microsoft建立了紧密的合作关系，共同推广Quorum;Quorum也登录了Azure、阿里云等云服务端的BaaS平台。
     
     </summary>
     
@@ -82,15 +75,11 @@
     <link href="https://ft-john.github.io/20191212-antchain-2/"/>
     <id>https://ft-john.github.io/20191212-antchain-2/</id>
     <published>2019-12-12T13:10:30.000Z</published>
-    <updated>2019-12-12T13:11:50.826Z</updated>
+    <updated>2019-12-13T01:50:46.347Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;本文将继续介绍我在阿里云下基于蚂蚁区块链开发的产品溯源Demo客户端部分。蚂蚁链提供了两个平台的客户端SDK：Java与Node.js，我使用的是JS SDK。&lt;/p&gt;
-&lt;h1 id=&quot;开发前准备&quot;&gt;开发前准备&lt;a class=&quot;post-anchor&quot; href=&quot;#开发
-      
+      蚂蚁区块链是蚂蚁金服自主开发联盟区块链底层引擎，在阿里的强力宣传下，一直保持很高的曝光度。特别是今年的双十一，给4亿件天猫海淘商品在区块链上获得了“身份证”，实现从海外采购到国内配送的全链路溯源。蚂蚁链经过阿里内部这么多极端应用场景的锤炼，相信可以胜任大多数的企业应用场景。
     
     </summary>
     
@@ -113,14 +102,11 @@
     <link href="https://ft-john.github.io/20191212-antchain-1/"/>
     <id>https://ft-john.github.io/20191212-antchain-1/</id>
     <published>2019-12-12T13:07:05.000Z</published>
-    <updated>2019-12-12T13:10:13.992Z</updated>
+    <updated>2019-12-13T02:03:01.139Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;h1 id=&quot;蚂蚁链与阿里云&quot;&gt;蚂蚁链与阿里云&lt;a class=&quot;post-anchor&quot; href=&quot;#蚂蚁链与阿里云&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;蚂蚁区块链是蚂蚁金服自主开发联盟区块链底层引擎，在阿里的强力宣传下，一直保持很高的曝光度。特别是今年的双十
-      
+      蚂蚁区块链是蚂蚁金服自主开发联盟区块链底层引擎，在阿里的强力宣传下，一直保持很高的曝光度。特别是今年的双十一，给4亿件天猫海淘商品在区块链上获得了“身份证”，实现从海外采购到国内配送的全链路溯源。蚂蚁链经过阿里内部这么多极端应用场景的锤炼，相信可以胜任大多数的企业应用场景。
     
     </summary>
     
@@ -143,11 +129,11 @@
     <link href="https://ft-john.github.io/20191212-aliyun-baas-1/"/>
     <id>https://ft-john.github.io/20191212-aliyun-baas-1/</id>
     <published>2019-12-12T13:02:39.000Z</published>
-    <updated>2019-12-12T14:51:43.701Z</updated>
+    <updated>2019-12-13T01:47:48.186Z</updated>
     
     <summary type="html">
     
-      test
+      区块链技术自2008年随着比特币面市以来，以其去中心化、匿名可信、可追溯、不可篡改等特性，受到社会的广泛关注，被誉为“第三代互联网”。区块链根据其适用的不同场景，被区分为公有链、联盟链（许可链）与私有链。目前公有链产品，如BTC、ETH、EOS等主要应用在加密数字货币领域；而联盟链与私有链主要应用在政府、企业的一些去中心化业务场景中，如供应链金融、产品溯源、版权保护等等。
     
     </summary>
     

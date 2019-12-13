@@ -218,7 +218,8 @@
       <div>
       </div>
     </div>
-    <h1 id="蚂蚁链与阿里云">蚂蚁链与阿里云<a class="post-anchor" href="#蚂蚁链与阿里云"></a></h1><p>&emsp;&emsp;蚂蚁区块链是蚂蚁金服自主开发联盟区块链底层引擎，在阿里的强力宣传下，一直保持很高的曝光度。特别是今年的双十一，给4亿件天猫海淘商品在区块链上获得了“身份证”，实现从海外采购到国内配送的全链路溯源。蚂蚁链经过阿里内部这么多极端应用场景的锤炼，相信可以胜任大多数的企业应用场景。<br>&emsp;&emsp;蚂蚁链目前暂时还未开源，无从了解过多的技术细节。不过经过公开的文档中可以看到底层采用的是以太坊那套技术框架，虚拟机采用的是EVM，智能合约开发使用Solidity，提供Java与JS SDK。</p>
+    <p><a href="/20191212-antchain-1/1.jpeg" data-caption="antblockchain" data-fancybox="images"><img src="/20191212-antchain-1/1.jpeg" alt="antblockchain"></a></p>
+<h1 id="蚂蚁链与阿里云">蚂蚁链与阿里云<a class="post-anchor" href="#蚂蚁链与阿里云"></a></h1><p>&emsp;&emsp;蚂蚁区块链是蚂蚁金服自主开发联盟区块链底层引擎，在阿里的强力宣传下，一直保持很高的曝光度。特别是今年的双十一，给4亿件天猫海淘商品在区块链上获得了“身份证”，实现从海外采购到国内配送的全链路溯源。蚂蚁链经过阿里内部这么多极端应用场景的锤炼，相信可以胜任大多数的企业应用场景。<br>&emsp;&emsp;蚂蚁链目前暂时还未开源，无从了解过多的技术细节。不过经过公开的文档中可以看到底层采用的是以太坊那套技术框架，虚拟机采用的是EVM，智能合约开发使用Solidity，提供Java与JS SDK。</p>
 <p>&emsp;&emsp;蚂蚁链也是阿里云BaaS服务支持的三大区块链引擎之一，使用阿里云BaaS，可以极大简化区块链网络的部署运维成本。当然，蚂蚁链目前没有开源，也不提供独立部署，只能通过阿里云BaaS或是蚂蚁金服下的区块链BaaS平台来进行管理。<br>&emsp;&emsp;除了运维的支撑，阿里云BaaS也为蚂蚁链提供一个在线合约开发工具 – “Cloud IDE”。有点类似于以太坊的Remix IDE，为智能合约开发提供简单、高效的集成环境，并提供以下核心功能：</p>
 <ul>
 <li>合约编辑与编译，展示编译结果字节码和接口说明（ABI）。</li>
@@ -227,7 +228,7 @@
 <li>保存合约工程到 BaaS 合约工程管理。</li>
 </ul>
 <p>在前段时间，我有机会体验了阿里云BaaS服务，尝试照着文档开发了一个蚂蚁链的Demo应用。现把主要的开发步骤与心得记录下来，与大家共享。</p>
-<h1 id="创建蚂蚁链网络">创建蚂蚁链网络<a class="post-anchor" href="#创建蚂蚁链网络"></a></h1><p>通过BaaS可以很方便创建联盟，建立区块链网络，详细操作可以参考<a href="https://www.alibabacloud.com/help/zh/doc-detail/118027.htm" target="_blank" rel="noopener">阿里云官方文档</a>或我的<a href="https://ft-john.github.io/2019/12/12/aliyun-baas-1/">上一篇博客</a>。</p>
+<h1 id="创建蚂蚁链网络">创建蚂蚁链网络<a class="post-anchor" href="#创建蚂蚁链网络"></a></h1><p>通过BaaS可以很方便创建联盟，建立区块链网络，详细操作可以参考<a href="https://www.alibabacloud.com/help/zh/doc-detail/118027.htm" target="_blank" rel="noopener">阿里云官方文档</a>或我的<a href="/20191212-aliyun-baas-1/">上一篇博客</a>。</p>
 <h1 id="蚂蚁链智能合约">蚂蚁链智能合约<a class="post-anchor" href="#蚂蚁链智能合约"></a></h1><p>蚂蚁链虽使用solidity作为智能合约的开发语言，但使用时与以太坊最新原生的solidity语法有不少差别：</p>
 <ol>
 <li><p>蚂蚁链只支持到solidity 0.4.23及以下版本，不支援solidity最新的语法特性；</p>
