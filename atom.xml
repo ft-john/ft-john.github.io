@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ft-john.github.io/"/>
-  <updated>2019-12-13T02:03:27.922Z</updated>
+  <updated>2019-12-18T09:01:52.388Z</updated>
   <id>https://ft-john.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DCEP 央行法定数字货币技术解析（一）</title>
+    <link href="https://ft-john.github.io/20191218-dcep1/"/>
+    <id>https://ft-john.github.io/20191218-dcep1/</id>
+    <published>2019-12-18T06:55:20.000Z</published>
+    <updated>2019-12-18T09:01:52.388Z</updated>
+    
+    <summary type="html">
+    
+      DCEP是中国人民银行推出的法定数字货币，全称是 Digital Currency Electronic Payment，也就是数字货币和电子支付工具。
+    
+    </summary>
+    
+    
+      <category term="央行数字货币" scheme="https://ft-john.github.io/categories/%E5%A4%AE%E8%A1%8C%E6%95%B0%E5%AD%97%E8%B4%A7%E5%B8%81/"/>
+    
+    
+      <category term="区块链" scheme="https://ft-john.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="CBDC" scheme="https://ft-john.github.io/tags/CBDC/"/>
+    
+      <category term="央行数字货币" scheme="https://ft-john.github.io/tags/%E5%A4%AE%E8%A1%8C%E6%95%B0%E5%AD%97%E8%B4%A7%E5%B8%81/"/>
+    
+      <category term="DCEP" scheme="https://ft-john.github.io/tags/DCEP/"/>
+    
+  </entry>
   
   <entry>
     <title>阿里云BaaS下企业以太坊（Quorum）开发实践</title>
