@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    
+    <title>
+      DCEP 央行法定数字货币技术解析（三）：D币的存储与流通 - FT-JOHN
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.1.1"><link rel="alternate" href="/atom.xml" title="FT-JOHN" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#术语与缩写"><span class="toc-text">术语与缩写</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1、用户端数字货币钱包"><span class="toc-text">1、用户端数字货币钱包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1、钱包是什么样的？"><span class="toc-text">1.1、钱包是什么样的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2、如何开通钱包？"><span class="toc-text">1.2、如何开通钱包？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、DCEP交易过程"><span class="toc-text">2、DCEP交易过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1、如何兑换D币？"><span class="toc-text">2.1、如何兑换D币？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2、如何存入D币？"><span class="toc-text">2.2、如何存入D币？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3、如何实现网上支付交易？"><span class="toc-text">2.3、如何实现网上支付交易？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4、如何实现面对面在线（或单离线）交易？"><span class="toc-text">2.4、如何实现面对面在线（或单离线）交易？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5、如何实现面对面双离线交易？"><span class="toc-text">2.5、如何实现面对面双离线交易？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、DCEP方案优势"><span class="toc-text">3、DCEP方案优势</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1、-与纸币相比"><span class="toc-text">3.1、 与纸币相比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-、与市场其他代替纸币的货币系统相比"><span class="toc-text">3.2 、与市场其他代替纸币的货币系统相比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3、安全性表现"><span class="toc-text">3.3、安全性表现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、总结"><span class="toc-text">4、总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/friends" class="">
+          友链
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">FT-JOHN</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">FT-JOHN</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/friends" class="">
+            友链
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/ft-john" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">DCEP 央行法定数字货币技术解析（三）：D币的存储与流通</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/12/29</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/20191229-decp3/" data-flag-title="DCEP 央行法定数字货币技术解析（三）：D币的存储与流通">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/央行数字货币">央行数字货币</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/区块链">区块链</a>
+                  
+                
+                  
+                    <a href="/tags/CBDC">CBDC</a>
+                  
+                
+                  
+                    <a href="/tags/央行数字货币">央行数字货币</a>
+                  
+                
+                  
+                    <a href="/tags/DCEP">DCEP</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="https://ft-john.github.io/20191227-dcep2/">上文中</a>已经介绍了DCEP数字货币从“设计”、“印制”到“发行”的全过程，在本文中，我将继续探讨在用户端DCEP是如何完成安全存储与离线交易等功能。</p>
+<h1 id="术语与缩写">术语与缩写<a class="post-anchor" href="#术语与缩写"></a></h1><p>在印制科学技术研究所的相关专利文档中，采用了一系列的专有单词或符号来表示一些特定的名词，为了描述方便，本文中也参照采用同样的缩写方式。现提前说明如下：</p>
+<ul>
+<li>D-RMB：基于密码数字的人民币数字货币体系，如 “D-RMB系统”</li>
+<li>D<sub>币</sub>: 指具体的数字货币资产，如 “D<sub>币</sub>交易”</li>
+<li>D<sub>币1</sub>、D<sub>币5</sub>、D<sub>币10</sub>、D<sub>币20</sub>、D<sub>币50</sub>、D<sub>币100</sub>: 固定面值的D<sub>币</sub>资产，如D<sub>币100</sub>表示面值为100元的D<sub>币</sub></li>
+</ul>
+<h1 id="1、用户端数字货币钱包">1、用户端数字货币钱包<a class="post-anchor" href="#1、用户端数字货币钱包"></a></h1><h2 id="1-1、钱包是什么样的？">1.1、钱包是什么样的？<a class="post-anchor" href="#1-1、钱包是什么样的？"></a></h2><p><a href="https://ft-john.github.io/20191227-dcep2/">上文中</a>有提到DCEP数字货币拥有纸币类似的特性，但与纸币相比，最大的差别在于一种是纸币形态，属于“原子世界”，不可复制；一种是数字形态，属于“比特世界”，数据可无限复制。在数字货币应用场景下，“可复制”的特性将带来极为严重的影响：一笔数字资产可被重复使用，也就是所谓的“双花”。如果同一笔资产可以花两次甚至花多次，数字货币也就失去了货币应有的“四大基本智能”：价值尺度、价值贮藏、流通手段、支付手段。</p>
+<p>“比特币”设计了分布式账本、共同记账、集体维护、历史追溯等技术手段，成功的解决了数字货币“双花”的难题，同时也带了区块链技术的蓬勃发展。然而，比特币终端钱包，作为P2P网络的一个节点，因着其TPS低、交易确认时间长、需要实时联网等问题，也无法应用于日常消费场景。</p>
+<p>同时，数字货币目前没有安全保管的途径。现有的数字货币一般都存放在本地钱包中，以比特币为例来说，当木马感染了用户电脑后，它会自动寻找电脑中的wallet .dat文件( Wallet .dat是比特币的钱包数据)，然后发送给攻击者，从而盗取用户的比特币，因而，如何安全地保管数字货币也是亟待需要解决的问题。</p>
+<p>那么DCEP的终端钱包长什么样呢？</p>
+<p>从央行印制科学技术研究所一系列专利文档中可以看出，DCEP钱包将采用一种以D-RMB芯片卡为基础、软硬件结合的综合性用户终端。</p>
+<p>专利文档中并没有对芯片卡的技术原理进行详细描述，不过结合当前市面上已有的一些芯片卡应用（如IC储值卡、IC交通卡、IC银行芯片卡…），可以了解到IC卡以其自身高度安全的制作工艺、加密技术可以保证存入的数据安全，不可复制、不易篡改，广泛用于小额支付场景。D-RMB芯片卡是更高安全级别的芯片卡，可以有效保证D<sub>币</sub>的存储与交易安全。</p>
+<p>在通过对专利文档中各种应用场景的综合分析后，可以找到D-RMB芯片将拥有以下特点：</p>
+<ol>
+<li>D-RMB芯片卡卡基作为D<sub>币</sub>的安全载体，在D<sub>币</sub>流通的各个环节加强保证D<sub>币</sub>的安全</li>
+<li>D-RMB芯片卡的生产、发行环节将受央行的严格管控</li>
+<li>D-RMB芯片卡拥有唯一的卡号，电子钱包的钱包地址包括该数字货币芯片卡卡号的哈希值</li>
+<li>D-RMB芯片卡至少加密存储了以下数据内容：<ul>
+<li>唯一卡号</li>
+<li>央行签名</li>
+<li>钱包私钥</li>
+<li>数字货币（D<sub>币</sub>)</li>
+</ul>
+</li>
+<li>D-RMB芯片卡可以是多种不同形态，如：可视蓝牙IC卡、IC卡态、手机-eSE卡、手机-安全SD卡、手机-SIM卡…</li>
+</ol>
+<blockquote>
+<p>从以上第5点可以看出，在以D-RMB芯片卡为基础的数字货币钱包的形态是可以多种多样的，按照应用场景可以做成不同的形态，如手机应用、可视蓝牙IC卡、POS机、收款机…</p>
+</blockquote>
+<p>基于D-RMB芯片卡的钱包在应用层面拥有以下功能：</p>
+<ul>
+<li>可以自动统计所有D<sub>币</sub>金额</li>
+<li>能自动区别标识“钱包”内未经央行在线校验的数字货币和已校验已登记数字货币</li>
+<li>可以根据用户输入的金额数自动找到“钱包”内的D<sub>币</sub>组合，并在支付过程中自动选定已匹配好的D<sub>币</sub>进行交易</li>
+<li>交易完成后，自动将参与支出的D<sub>币</sub>进行删除</li>
+<li>在交易过程中自动完成公钥加密、私钥签名等等操作</li>
+<li>完成业务需要的其他功能，如在线的注册申请、提取、支付、兑现、离线的支付请求等</li>
+</ul>
+<h2 id="1-2、如何开通钱包？">1.2、如何开通钱包？<a class="post-anchor" href="#1-2、如何开通钱包？"></a></h2><p>如前面所述，DCEP数字货币钱包是一款以D-RMB芯片卡为基础的软硬件一体终端设备，所以开通钱包无法简单的通过注册开通，需要经过一定的流程。就好像纸币钱包一样，用户也得申请一个装数字货币的“钱包”。以下将专利文档中描述的电子钱包生产开通流程做一个简单的梳理：</p>
+<ol>
+<li><p>有资质厂商生产D-RMB芯片卡：芯片卡的生产必须由经过中央银行认证的，具有生产资质的企业生产。生产制造的数量与质量由央行严格把控。</p>
+</li>
+<li><p>D-RMB芯片卡安全运输到央行</p>
+</li>
+<li><p>央行统一做芯片数据的个性化：央行对新生产的D-RMB芯片卡进行个性化操作，写入央行认证信息，并记录到D-RMB系统中</p>
+</li>
+<li><p>将D-RMB芯片卡投放到商业银行</p>
+</li>
+<li><p>实名发卡</p>
+<p>I. 用户向商业银行提交发卡申请及个人身份材料</p>
+<p>II. 商业银行进行资质审核</p>
+<p>III. 商业银行执行D-RMB芯片卡二次个性化，写入用户个人信息</p>
+<p>IV. 在央行D-RMB系统中进行登记（???）</p>
+<p>V. 发卡成功</p>
+</li>
+<li><p>匿名发卡</p>
+<p>I. 用户向商业银行申领芯片卡</p>
+<p>II. 商业银行进行直接发卡</p>
+</li>
+</ol>
+<p><a href="/images/20191230/1.png" data-caption="开通流程" data-fancybox="images"><img src="/images/20191230/1.png" alt="开通流程"></a></p>
+<blockquote>
+<p>以上开通流程看似复杂，不过我猜测随着DCEP的推广，申领过程会越来越简单，申领时间周期也会越来越短。D-RMB芯片卡将有极大可能会集成在手机SIM卡大量推向市场（这也许可以解释为何三大电信运营商将参与到DCEP首批商用测试），再加上目前的手机实名制身份认证，D-RMB钱包的申领过程将可以直接在手机上完成，手机也就成了随身携带的D-RMB钱包。</p>
+</blockquote>
+<h1 id="2、DCEP交易过程">2、DCEP交易过程<a class="post-anchor" href="#2、DCEP交易过程"></a></h1><p>D<sub>币</sub>在用户端的流通环节，主要包括与银行之间的交易：兑换D<sub>币</sub>与存入D<sub>币</sub>、用户之间的交易：在线（远程）交易与面对面交易（包括单离线交易与双离线交易），以下逐一分析这些交易的实现过程。</p>
+<h2 id="2-1、如何兑换D币？">2.1、如何兑换D<sub>币</sub>？<a class="post-anchor" href="#2-1、如何兑换D币？"></a></h2><ol>
+<li>用户向商业银行系统发起兑换请求，主要请求数据包括：兑换金额、银行账户信息、D-RMB芯片卡信息</li>
+<li>商业银行审核兑换请求，并检查用户银行账户余额是否足够</li>
+<li>商业银行扣除用户银行账户中与兑换金额相等的金额，并根据兑换金额信息自动选定参与兑换的数字货币（因为DCEP数字货币特性，每一份不同面额的D<sub>币</sub>都是独立的、唯一的，系统需要选定一系列不同的D<sub>币</sub>使其总金额与交易金额相等）</li>
+<li>商业银行将准备兑换的D<sub>币</sub>信息发送兑换请求至央行D-RMB系统</li>
+<li>央行D-RMB系统变更D<sub>币</sub>属主，并登记交易记录，返回结果给商业银行D-RMB系统</li>
+<li>商业银行接收央行成功指令后，将准备的D<sub>币</sub>定入到D-RMB芯片卡中</li>
+</ol>
+<blockquote>
+<p>由以上步骤可见，兑换D<sub>币</sub>需要在“联线”环境下才能执行。兑换方式我猜测可以直接在手机钱包上就可以完成。再扩展一下，也可以很容易实现在存款机上将钱币直接兑换D<sub>币</sub>。</p>
+</blockquote>
+<h2 id="2-2、如何存入D币？">2.2、如何存入D<sub>币</sub>？<a class="post-anchor" href="#2-2、如何存入D币？"></a></h2><ol>
+<li>用户准备存款申请，主要包括：存款金额、存款账户</li>
+<li>用户钱包根据存款金额，自动选择要存入的一系列D<sub>币</sub>，并将D<sub>币</sub>与存款申请一起提交到商业银行D-RMB系统</li>
+<li>商业银行接收申请，验证申请与D<sub>币</sub>的合法性，将D<sub>币</sub>与存款账户发送给央行D-RMB系统</li>
+<li>央行系统将D<sub>币</sub>属主变更为商业银行，并返回执行结果</li>
+<li>商业银行接收央行执行成功结果，在用户存款账户中增加相应的金额</li>
+<li>商业银行向用户钱包发出存款成功的通知</li>
+<li>用户钱包自动删除参与存款的D<sub>币</sub></li>
+</ol>
+<blockquote>
+<p>由以上步骤可见，D<sub>币</sub>存款也需要在“联线”环境下才能执行。存款方式我猜测也可以直接在手机钱包上完成。同时，也可以很容易实现在取款机上将D<sub>币</sub>直接兑换成纸币。</p>
+</blockquote>
+<h2 id="2-3、如何实现网上支付交易？">2.3、如何实现网上支付交易？<a class="post-anchor" href="#2-3、如何实现网上支付交易？"></a></h2><ol>
+<li>用户钱包将付款信息发送给受理设备，付款信息包括D-RMB芯片卡信息、付款用的D<sub>币</sub></li>
+<li>受理设备将付款信息发送给商业银行D-RMB系统</li>
+<li>商业银行收到付款信息并审核无误后，向央行D-RMB系统发送变更数字货币属主请求</li>
+<li>央行系统将D<sub>币</sub>属主变更为商业银行，并返回执行结果</li>
+<li>商业银行接收央行执行成功结果，在商户存款账户中增加相应的金额</li>
+<li>商业银行通知受理终端付款成功</li>
+<li>受理终端通知用户钱包支付成功，用户钱包自动删除参与存款的D<sub>币</sub></li>
+</ol>
+<blockquote>
+<p>以上方案可以直接将D<sub>币</sub>本地钱包应用于在线支付场景。需注意的是收款方资金是存入到的银行账户中的，而不是D-RMB钱包，我猜想原因主要是以下几个方面：这种方式刚好满足了商户收款的业务场景（交易次数多，金额不等，存入银行账户可以解决钱包存储空间的限制）；在业务系统中，钱包属于客户端，银行系统属于服务端，客户端方便发起主动连接服务端，但服务端不易主动连接客户端；也避免了钱包为了检查是否有新资产到账而需要保持实时在线的情况。</p>
+<p>由此扩展，用户之间的远程转账也可以参考以上这种方案，只是会存在个弊端就是要求收款方需要开通银行账户。</p>
+</blockquote>
+<h2 id="2-4、如何实现面对面在线（或单离线）交易？">2.4、如何实现面对面在线（或单离线）交易？<a class="post-anchor" href="#2-4、如何实现面对面在线（或单离线）交易？"></a></h2><ol>
+<li>移动终端接收外部操作输入付款金额，然后将付款信息发送至D-RMB钱包</li>
+<li>D-RMB钱包依据付款金额，选择指定参与交易的D<sub>币</sub>，发送至移动终端</li>
+<li>移动终端接收D<sub>币</sub>后，发送请求给商业银行D-RMB系统，请求进行属主变更</li>
+<li>商业银行收到请求后，发请属主变更请求后给央行D-RMB系统</li>
+<li>央行系统将D<sub>币</sub>属主变更为收款方，并返回执行结果给商业银行</li>
+<li>商业银行接收央行执行成功结果，发送执行成功结果给移动终端</li>
+<li>移动终端通知D-RMB钱包收款成功，钱包自动删除参与存款的D<sub>币</sub></li>
+</ol>
+<blockquote>
+<p>以上方案允许D-RMB钱包离线，通过蓝牙、NFC等方式（甚至有可能是加密后的二维码数据）与移动终端（也就是收款方）通讯，可应用于线下收款场景。</p>
+</blockquote>
+<h2 id="2-5、如何实现面对面双离线交易？">2.5、如何实现面对面双离线交易？<a class="post-anchor" href="#2-5、如何实现面对面双离线交易？"></a></h2><p>DCEP在支付方式层面与现在的移动支付最大的改进就是支付“双离线支付”，也就是可以在收付款双方均离线的情况下完成交易，这样也就实现了类似纸币不依赖于网络的交易模式。</p>
+<p>在DCEP概念提出前，双离线支付也借助着IC储值芯片卡的高安全性与高破解成本等特性，广范应用在于交通、餐饮等一些小额支付场景。从前面介绍的技术方案中可以看出，DCEP也将是基于芯片卡的应于，因此能实现双离线支付功能，相对来说也就比较好理解了。</p>
+<p>以下列出DCEP的双离线支付流程：</p>
+<ol>
+<li>收付款双方D-RMB钱包之间都尝试无法与商业银行D-RMB系统连接成功后，两都之间通过蓝牙或NFC等方式建议连接</li>
+<li>付款方录入付款金额，向收款方钱包发送支付请求，支付请求中包括了支付金额与参与支付的D<sub>币</sub></li>
+<li>收款方接收并保存支付交易信息</li>
+<li>待收款方与商业银行网络连接成功后，发送交易信息至商业银行D-RMB网络确认</li>
+<li>商业银行收到请求后，发请属主变更请求后给央行D-RMB系统</li>
+<li>央行系统将D<sub>币</sub>属主变更为收款方，并返回执行结果给商业银行</li>
+<li>商业银行接收央行执行成功结果，发送执行成功结果给收款方</li>
+</ol>
+<blockquote>
+<p>综合央行印制科学技术研究所一系列的专利文档，其中关于“双离线支付”方面介绍是并不是很详细。基于以上流程，我对整个双离线支付过程还是存在着许多疑问，如：付款成功后，付款方钱包是否会在未确认的情况下自动删除已支付的D<sub>币</sub>，如果不删除又采用何种机制来保证不会发生“双花”的问题？收款方收到D<sub>币</sub>后，在交易未被D-RMB系统确认时是否可以花费？收款方如何验证D<sub>币</sub>的合法性？…</p>
+<p>离线支付是一个风险很高的业务场景，相应的解决方案一定要考虑的非常细致，防范任何可能出现的问题。从一系列专利文档中，我并没有看到DCEP在这块业务上有什么突破性的新方法。这也是我近期研究DCEP以来稍感遗憾的地方。</p>
+</blockquote>
+<h1 id="3、DCEP方案优势">3、DCEP方案优势<a class="post-anchor" href="#3、DCEP方案优势"></a></h1><h2 id="3-1、-与纸币相比">3.1、 与纸币相比<a class="post-anchor" href="#3-1、-与纸币相比"></a></h2><ul>
+<li>携带与清算更加方便、流通更便捷</li>
+<li>避免了再印制纸币，节省货币的发行成本</li>
+<li>数字货币也不易丢失，更加安全</li>
+<li>方便资金回笼，利用央行进行货币管理</li>
+<li>数字货币能够做到与实物货币进行流通兼容</li>
+</ul>
+<h2 id="3-2-、与市场其他代替纸币的货币系统相比">3.2 、与市场其他代替纸币的货币系统相比<a class="post-anchor" href="#3-2-、与市场其他代替纸币的货币系统相比"></a></h2><ul>
+<li>以手机为D-RMB载体，可采用HCE和TEE方案，从而提供了更大存储空间，不完全依赖硬件厂商，推广更为便利</li>
+<li>在发行方式上，D-RMB为货币本身的数字化，不依赖任何银行账户和单一网络</li>
+<li>在支付方式上，既可提供类似于纸币的当面付交易，也可提供类似于电子支付系统的网络远程支付交易，即可支持联机、也可支持脱机交易，方式便捷、灵活</li>
+<li>在交易速度上，付款速度比联机刷卡支付方式有很大提高，非常适于小额快速支付</li>
+<li>在使用习惯上，既可兼容原有的刷卡支付方式，也可提供面对面的数字货币支付，同时还可提供电子化的交易记录，便于理财统计，用户可接受度高</li>
+</ul>
+<h2 id="3-3、安全性表现">3.3、安全性表现<a class="post-anchor" href="#3-3、安全性表现"></a></h2><ul>
+<li>币本身的安全性由密码算法来保护，可有效保障货币信息的机密性和完整性，安全性高</li>
+<li>D-RMB数字货币载体的安全性在移动终端利用芯片技术、在后台云端利用可信技术，实现端到端的安全</li>
+<li>一方面依赖于传统的电子支付系统安全技术，同时后台利用强大的D-RMB云计算系统，进一步保障了交易安全</li>
+<li>在用户隐私保护方面，通过“前台自愿、后台实名”的方式，既保证了用户隐私，又规避了非法交易的风险</li>
+</ul>
+<h1 id="4、总结">4、总结<a class="post-anchor" href="#4、总结"></a></h1><p>至此，对于央行印制科学技术研究所的专利文档的研究基本就告一段落了。从这一系列专利中，我们可以比较清晰了解到DCEP中Digital Currency的形态以及Electronic Payment的主要流程。这些专利文档都是在2016年申请的，也可以看出央行在很早前就一直关注并投投入大量人力开展数字货币的研究。到今天央行数字货币基本上趋于成熟，即将面世，也算是功夫不负有心人。</p>
+<p>不过这些专利文档描述得较为简洁，并且发布时间至今也较为久远，不清楚这些专利中描述的方案与最终的实现方案有多大差距，只能拭目以待了。在以后我将继续研究其他几个机构的相关专利文档，并将自己的研究心得与大家分享。</p>
+<h1 id="参考">参考<a class="post-anchor" href="#参考"></a></h1><ul>
+<li><a href="http://www.soopat.com/Home/Result?SearchWord=SQR%3A(" target="_blank" rel="noopener" 中国人民银行印制科学技术研究所")">央行印制科学技术研究所相关专利</a></li>
+</ul>
+
+
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/20191227-dcep2/">DCEP 央行法定数字货币技术解析（二）：D币的印制与发行</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://ft-john.github.io">FT-JOHN</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://ft-john.github.io/20191229-decp3/">https://ft-john.github.io/20191229-decp3/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://ft-john.github.io">FT-JOHN</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2019
+            <a href="https://ft-john.github.io">FT-JOHN</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"valine\":{\"API_ID\":\"mQNa3kYG06ujedb3xJimTVfn-MdYXbMMI\",\"API_KEY\":\"GywtDpMcHQR94oNPqXtVQozO\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
